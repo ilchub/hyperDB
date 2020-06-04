@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="HyperDB:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/HyperDB_jar</output-path>
-    <root id="archive" name="HyperDB.jar">
-      <element id="module-output" name="HyperDB" />
-    </root>
-  </artifact>
-</component>
