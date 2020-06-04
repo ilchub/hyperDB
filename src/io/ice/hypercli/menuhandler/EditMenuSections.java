@@ -1,6 +1,7 @@
 package io.ice.hypercli.menuhandler;
 
 import io.ice.hyperdb.hyperDB;
+import jdk.jshell.spi.ExecutionControl;
 
 import javax.imageio.IIOException;
 import java.io.BufferedReader;
@@ -55,7 +56,12 @@ public class EditMenuSections {
         hyperDB.DatabaseHandler.GetDBContent(dbName);
         System.out.print("Please specify record number, you want to delete: ");
         int recordNumber = Integer.parseInt(scan.nextLine());
-        hyperDB.DatabaseRecordHandler.RemoveDBRecord(dbName, recordNumber);
+        try {
+            hyperDB.DatabaseRecordHandler.RemoveDBRecord(dbName, recordNumber);
+        }
+        catch (ExecutionControl.NotImplementedException e){
+            e.printStackTrace();
+        }
         EditMenu();
     }
     public static void ListDBContent(){

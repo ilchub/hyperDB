@@ -1,14 +1,18 @@
 package io.ice.hyperdb;
 
 import io.ice.hypercli.menuhandler.EditMenuSections;
+import jdk.jshell.spi.ExecutionControl;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 public class hyperDB {
     public static class DatabaseHandler{
@@ -47,18 +51,8 @@ public class hyperDB {
                 e.printStackTrace();
             }
         }
-        public static void RemoveDBRecord(String dbFilename, int recordNumber){
-            try {
-                FileWriter dbHandler = new FileWriter(dbFilename);
-                List<String> dbContent = Files.readAllLines(Paths.get(dbFilename));
-                dbContent.remove(recordNumber-1);
-                String[] dbContentFinal = dbContent.toArray(String[]::new);
-                Files.write(Paths.get(dbFilename), dbContentFinal.toString().getBytes(), StandardOpenOption.WRITE);
-            }
-            catch (IOException | IndexOutOfBoundsException e){
-                e.printStackTrace();
-                EditMenuSections.EditMenu();
-            }
+        public static void RemoveDBRecord(String dbFilename, int recordNumber) throws ExecutionControl.NotImplementedException {
+            throw new ExecutionControl.NotImplementedException("Removing records not yet implemented");
         }
     }
 }
